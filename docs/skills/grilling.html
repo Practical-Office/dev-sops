@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/grilling · Dev SOPs · Practical AI</title>
+  <meta name="description" content="One question at a time until shared understanding." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="grilling" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/grilling</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="pill">BML: Optional</span> <span class="pill">Bug: Optional</span> <span class="pill">Update: Optional</span></div>
+        </div>
+        <section class="hero skill-hero">
+          <span class="status-chip">Cursor skill</span>
+          <div class="module-header" style="border:none;padding:0;margin:1rem 0 0">
+            <span class="module-badge">/grilling</span>
+            <div>
+              <h1>Grilling</h1>
+              <p class="hero-lede">Interview relentlessly about every aspect of a plan until you reach shared understanding — one question at a time.</p>
+            </div>
+          </div>
+        </section>
+
+        <article class="content-block" id="why">
+          <p class="eyebrow">Why</p>
+          <h2>Stress-test before commitment</h2>
+          <p>Plans hide assumptions. Grilling walks the decision tree branch by branch, resolving dependencies between decisions in order. Each question forces a explicit choice; the agent supplies a recommended answer so you are never staring at a blank prompt.</p>
+          <p><a href="grill-with-docs.html">grill-with-docs</a> wraps this interview with domain modeling and doc capture. Use raw <strong>grilling</strong> when you need the interview discipline without ADR/glossary writes.</p>
+        </article>
+
+        <article class="content-block" id="when">
+          <p class="eyebrow">When</p>
+          <h2>Use this skill</h2>
+          <ul>
+            <li>User says “grill this,” “stress-test,” or wants decisions challenged</li>
+            <li>Inside <a href="grill-with-docs.html">grill-with-docs</a> as the interview engine</li>
+            <li>Before committing to a pivot at Learn</li>
+            <li>Any time multiple dependent decisions must be resolved sequentially</li>
+          </ul>
+        </article>
+
+        <article class="content-block" id="how">
+          <p class="eyebrow">How</p>
+          <h2>Steps</h2>
+          <ol>
+            <li><strong>Frame the subject</strong> — plan, decision, or idea under test.</li>
+            <li><strong>Walk the tree</strong> — pick the next unresolved dependency; ask exactly one question.</li>
+            <li><strong>Recommend</strong> — with each question, state your recommended answer and why.</li>
+            <li><strong>Wait</strong> — do not ask the next question until the human responds.</li>
+            <li><strong>Look up facts</strong> — if the answer exists in the environment (files, issues, APIs), fetch it instead of asking.</li>
+            <li><strong>Confirm understanding</strong> — when the tree is resolved, summarize and wait for explicit confirmation before any action.</li>
+            <li><strong>Do not act</strong> — no implementation, spec, or tickets until confirmation.</li>
+          </ol>
+        </article>
+
+        <article class="content-block" id="io">
+          <p class="eyebrow">Inputs / outputs</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Inputs</th><th>Outputs</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Plan, decision, or design under review; access to repo/issue context for factual lookups</td>
+                  <td>Resolved decision tree; explicit shared understanding; human confirmation — no artifacts unless paired with grill-with-docs</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="content-block" id="anti-patterns">
+          <p class="eyebrow">Anti-patterns</p>
+          <h2>What to avoid</h2>
+          <ul>
+            <li><strong>Question dumps</strong> — Listing five questions at once defeats the purpose.</li>
+            <li><strong>Interrogating facts</strong> — “What’s in file X?” is an agent job, not a grill question.</li>
+            <li><strong>Premature action</strong> — Shipping code or filing specs before “we’re aligned.”</li>
+            <li><strong>Rhetorical grilling</strong> — Questions without recommended answers leave the human doing all the work.</li>
+            <li><strong>Skipping confirmation</strong> — Assuming silence means agreement.</li>
+          </ul>
+        </article>
+
+        <article class="content-block" id="micro-scenario">
+          <p class="eyebrow">Micro-scenario</p>
+          <h2>Abstract example</h2>
+          <div class="section-card">
+            <p>A lead proposes measuring “engagement” via weekly active users for a new checklist feature.</p>
+            <p>Q1: “Should engagement mean completed checklist or merely opened?” — recommends <em>completed</em> because the hypothesis is about setup completion. Human picks completed.</p>
+            <p>Q2: “Is the population all signups or only self-serve?” — agent reads the issue sample field instead of asking. Finds “self-serve only” already stated.</p>
+            <p>Q3: “If completion rises but support tickets also rise, is that pass or fail?” — recommends fail unless a secondary metric is added. Human adds ticket volume to kill criteria.</p>
+            <p>Agent summarizes the three decisions; human confirms. Session ends — no spec written yet.</p>
+          </div>
+        </article>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>

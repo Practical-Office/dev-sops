@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/grill-with-docs · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Relentless interview to sharpen a plan while capturing glossary terms and ADRs." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="grill-with-docs" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/grill-with-docs</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="status-chip">BML: Required</span> <span class="pill">Bug: Optional</span> <span class="status-chip">Update: Required</span></div>
+        </div>
+        <section class="hero skill-hero">
+          <span class="status-chip">Cursor skill</span>
+          <div class="module-header" style="border:none;padding:0;margin:1rem 0 0">
+            <span class="module-badge">/grill-with-docs</span>
+            <div>
+              <h1>Grill with <em>docs</em></h1>
+              <p class="hero-lede">A relentless interview to sharpen a plan or design — and capture glossary entries and architecture decision records as decisions crystallize.</p>
+            </div>
+          </div>
+        </section>
+
+        <article class="content-block" id="why">
+          <p class="eyebrow">Why</p>
+          <h2>Shared understanding before specs and code</h2>
+          <p>Vague experiments waste Build time. <strong>grill-with-docs</strong> combines the discipline of <a href="grilling.html">grilling</a> (one question at a time until you agree) with <strong>domain modeling</strong>: terms get pinned in <code>CONTEXT.md</code>, hard-to-reverse choices become ADRs, and contradictions with existing code surface early.</p>
+          <p>You do not ship from this skill. You stop when the human confirms shared understanding — then <a href="to-spec.html">to-spec</a> or <a href="implement.html">implement</a> can proceed without re-interviewing.</p>
+        </article>
+
+        <article class="content-block" id="when">
+          <p class="eyebrow">When</p>
+          <h2>Use this skill</h2>
+          <ul>
+            <li>Moving an experiment from <strong>Backlog</strong> to <strong>Build</strong> with non-obvious scope</li>
+            <li>Before <a href="to-spec.html">to-spec</a> on any non-trivial build</li>
+            <li>At <strong>Learn</strong> when pivoting and the domain language may shift</li>
+            <li>When the issue template’s technical context needs sharpening (<code>@paths</code> hints)</li>
+          </ul>
+          <p><strong>Skip</strong> for tiny builds (single small PR) — optional light grill only.</p>
+        </article>
+
+        <article class="content-block" id="how">
+          <p class="eyebrow">How</p>
+          <h2>Steps</h2>
+          <ol>
+            <li><strong>Start a grilling session</strong> — invoke <a href="grilling.html">grilling</a>: one question at a time, wait for each answer, offer a recommended answer with every question.</li>
+            <li><strong>Look up facts</strong> — explore the repo, issue body, and metrics docs yourself; reserve the human for decisions only.</li>
+            <li><strong>Apply domain modeling</strong> — challenge glossary conflicts, sharpen overloaded terms, stress-test edge-case scenarios, cross-check claims against code.</li>
+            <li><strong>Write docs inline</strong> — update <code>CONTEXT.md</code> when a term resolves; offer ADRs only when a choice is hard to reverse, surprising without context, and the result of a real trade-off.</li>
+            <li><strong>Confirm stop</strong> — do not act on the plan until the human confirms shared understanding.</li>
+          </ol>
+        </article>
+
+        <article class="content-block" id="io">
+          <p class="eyebrow">Inputs / outputs</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Inputs</th><th>Outputs</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Experiment issue (hypothesis, build scope, measure table); relevant repo paths; existing <code>CONTEXT.md</code> / ADRs</td>
+                  <td>Aligned mental model; updated glossary; new or revised ADRs; explicit open questions resolved — ready for <a href="to-spec.html">to-spec</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="content-block" id="anti-patterns">
+          <p class="eyebrow">Anti-patterns</p>
+          <h2>What to avoid</h2>
+          <ul>
+            <li><strong>Batch questions</strong> — Multiple questions at once bewilders; grilling is strictly one-at-a-time.</li>
+            <li><strong>Asking what tools can answer</strong> — File layout, label lists, and template fields should be looked up, not interrogated.</li>
+            <li><strong>Implementing before confirm</strong> — No code or spec publication until shared understanding is explicit.</li>
+            <li><strong>ADR spam</strong> — Not every choice deserves an ADR; trivial or easily reversed decisions stay in conversation only.</li>
+            <li><strong>CONTEXT as a spec</strong> — Glossary only; implementation detail belongs in specs and tickets.</li>
+          </ul>
+        </article>
+
+        <article class="content-block" id="micro-scenario">
+          <p class="eyebrow">Micro-scenario</p>
+          <h2>Abstract example</h2>
+          <div class="section-card">
+            <p>An engineer opens experiment issue #22 (“customers abandon multi-step forms”). They run <code>/grill-with-docs</code> with <code>@paths</code> to the onboarding module.</p>
+            <p>The agent asks: “Does ‘abandon’ mean closed tab, or saved draft never submitted?” — recommends counting only submitted-or-explicit-dismiss events. The human agrees; <code>CONTEXT.md</code> gains an <em>abandonment</em> entry.</p>
+            <p>A second question probes kill criteria vs. sample size. The agent reads the measure table from the issue rather than asking for numbers already there.</p>
+            <p>When the human says partial save is in scope, the agent finds code that only tracks full submits, flags the mismatch, and offers an ADR on event schema — declined for now as reversible.</p>
+            <p>Session ends with explicit “we’re aligned.” <code>/to-spec</code> is the next step.</p>
+          </div>
+        </article>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>

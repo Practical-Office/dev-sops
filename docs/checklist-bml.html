@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BML Checklist · Dev SOPs</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dev-sops.css" />
+</head>
+<body data-page="checklist-bml">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">BML Checklist</div>
+        <div class="topbar-actions">
+          <button type="button" class="btn btn-ghost btn-sm" id="resetChecklist">Reset checklist</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="window.print()">Print</button>
+        </div>
+      </header>
+      <main class="content">
+        <section class="hero">
+          <span class="status-chip">Ticket Type: BML</span>
+          <h1>Build-Measure-Learn <em>checklist</em></h1>
+          <p class="hero-lede">Preflight on Team Work intake; Run follows the <a href="https://practical-office.github.io/bml-onboarding/experiment-sop.html">Experiment SOP</a>.</p>
+        </section>
+
+        <div class="section-card">
+          <h2>Preflight</h2>
+          <ul class="checklist">
+            <li><label><input type="checkbox" data-checklist="bml-pf-type" /> Ticket Type is <code>BML</code> (not Bug or Update)</label></li>
+            <li><label><input type="checkbox" data-checklist="bml-pf-board" /> Card on Team Work; will move to BookIQ BML Board after intake</label></li>
+            <li><label><input type="checkbox" data-checklist="bml-pf-template" /> Experiment template filled: Hypothesis, Build, Measure (pass + kill + duration), Learn placeholder, Acceptance, Technical Context</label></li>
+            <li><label><input type="checkbox" data-checklist="bml-pf-skills" /> Skills installed: <a href="skills/grill-with-docs.html">grill-with-docs</a>, <a href="skills/to-spec.html">to-spec</a>, <a href="skills/to-tickets.html">to-tickets</a>, <a href="skills/implement.html">implement</a></label></li>
+            <li><label><input type="checkbox" data-checklist="bml-pf-assumption" /> Risky assumption stated in one sentence — what breaks if wrong?</label></li>
+            <li><label><input type="checkbox" data-checklist="bml-pf-wip" /> WIP check: max 3 cards in Build + Measure combined</label></li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <h2>Run</h2>
+          <ol class="checklist" style="list-style:decimal;padding-left:1.25rem">
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bml-r1" /> <strong>State the risky assumption.</strong> One sentence; what must be true for the bet to work.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bml-r2" /> <strong>Draft the experiment ticket.</strong> Six sections complete; numeric pass <em>and</em> kill criteria + duration.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bml-r3" /> <strong>Label and Backlog.</strong> Apply <code>experiment</code> label; stay on Backlog until hypothesis + kill criteria written.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bml-r4" /> <strong>Build.</strong> Non-trivial: <a href="skills/grill-with-docs.html">/grill-with-docs</a> → <a href="skills/to-spec.html">/to-spec</a> → <a href="skills/to-tickets.html">/to-tickets</a> → <a href="skills/implement.html">/implement</a>. Tiny builds may skip to implement.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bml-r5" /> <strong>Measure.</strong> Collect only pre-registered evidence; post weekly numbers on the issue.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bml-r6" /> <strong>Learn / Validate.</strong> Write what you learned; decide persevere, pivot, or kill; apply decision label.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bml-r7" /> <strong>Done.</strong> Pivot → revise hypothesis; Persevere → next bet; Kill → archive learning.</label></li>
+          </ol>
+        </div>
+
+        <p class="footer-note"><a href="checklists.html">← All checklists</a> · <a href="https://practical-office.github.io/bml-onboarding/experiment-sop.html">Living Experiment SOP</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="js/dev-sops.js"></script>
+</body>
+</html>

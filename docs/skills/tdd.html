@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/tdd · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Test-driven development: red-green-refactor at the right seam." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="tdd" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/tdd</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="pill">BML: Optional</span> <span class="status-chip">Bug: Required</span> <span class="pill">Update: Optional</span></div>
+        </div>
+        <section class="skill-hero module">
+          <div class="module-header">
+            <div class="module-badge">/tdd</div>
+            <div>
+              <h2>Test-driven development</h2>
+              <p class="module-time">Build-phase skill · invoked by <a href="implement.html"><code>/implement</code></a></p>
+            </div>
+          </div>
+          <p>The red → green loop. This skill is the reference that makes the loop produce tests worth keeping: what a good test is, where tests go, anti-patterns, and the rules of the cycle.</p>
+          <div class="pill-row">
+            <a class="pill" href="https://practical-office.github.io/bml-onboarding/">← Module 4: Build skills</a>
+            <a class="pill" href="code-review.html">/code-review</a>
+            <a class="pill" href="implement.html">/implement</a>
+          </div>
+        </section>
+
+        <div class="content-block">
+          <h3>Why</h3>
+          <p>Build-phase code in an experiment should be correct <em>and</em> changeable. TDD forces you to name behavior through public interfaces before implementation hardens. Tests that survive refactors become living specification — especially valuable when the experiment Build is thin but the learning stakes are high.</p>
+          <p>Every red → green cycle consults this skill before and during the loop, not after. Refactoring belongs to <a href="code-review.html"><code>/code-review</code></a>, not to the implementation loop itself.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>When</h3>
+          <ul>
+            <li><code>/implement</code> reaches code that benefits from automated verification at agreed seams</li>
+            <li>The spec or ticket names testable behavior (not “refactor internals”)</li>
+            <li>You and the agent have confirmed which <strong>seams</strong> are under test</li>
+            <li>User explicitly asks for test-first work or mentions red-green-refactor</li>
+          </ul>
+          <p><strong>Skip or minimize</strong> for throwaway <a href="prototype.html"><code>/prototype</code></a> code, one-off scripts, or Builds where the spec explicitly defers tests (document why on the issue).</p>
+        </div>
+
+        <div class="content-block">
+          <h3>How</h3>
+          <ol>
+            <li><strong>Confirm seams.</strong> Before any test, write down the public boundaries under test and agree them. Ask: “What’s the public interface, and which seams should we test?”</li>
+            <li><strong>Red.</strong> Write one failing test at one seam. Expected values come from an independent source of truth — spec literal, worked example, known-good fixture — not from re-deriving what the code does.</li>
+            <li><strong>Green.</strong> Write only enough code to pass that test. No speculative features for future tests.</li>
+            <li><strong>Repeat.</strong> One vertical slice: one seam, one test, one minimal implementation per cycle.</li>
+            <li><strong>Hand off.</strong> When the ticket’s behavior is covered, <code>/implement</code> runs typecheck, targeted tests, full suite once, then <a href="code-review.html"><code>/code-review</code></a>.</li>
+          </ol>
+          <p>Read project <code>CONTEXT.md</code> (if present) so test names match domain vocabulary. Respect ADRs in the area you touch.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>Inputs / outputs</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Inputs</th><th>Outputs</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Agreed seams (from spec or <code>/to-spec</code>)</td>
+                  <td>Failing test at one seam (red)</td>
+                </tr>
+                <tr>
+                  <td>One behavior slice from the ticket</td>
+                  <td>Minimal implementation passing that test (green)</td>
+                </tr>
+                <tr>
+                  <td>Independent expected values (spec, fixture, literal)</td>
+                  <td>Tests that read like specification — “user can complete X when Y”</td>
+                </tr>
+                <tr>
+                  <td>Project test conventions + domain language</td>
+                  <td>Committed code on the experiment branch, ready for review</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="failure-modes">
+          <h3>Anti-patterns</h3>
+          <ul>
+            <li><strong>Implementation-coupled tests</strong> — mock internal collaborators, test private methods, or assert via side channels (e.g. querying the database instead of the interface). Tell: test breaks on refactor though behavior unchanged.</li>
+            <li><strong>Tautological tests</strong> — assertion recomputes the expected value the same way the code does (<code>expect(add(a,b)).toBe(a+b)</code>). Can never disagree with the implementation.</li>
+            <li><strong>Horizontal slicing</strong> — all tests first, then all implementation. Bulk tests verify imagined behavior; structure commits before you understand the code. Use vertical slices instead.</li>
+            <li><strong>Refactor inside the loop</strong> — cleaning structure during red-green. Defer to <code>/code-review</code>.</li>
+            <li><strong>Unconfirmed seams</strong> — writing tests at boundaries nobody agreed to. Effort lands on noise instead of critical paths.</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h3>Micro-scenario</h3>
+          <p>An experiment Build adds a “mark insight reviewed” action. The ticket says: when a user marks reviewed, the insight status becomes <code>reviewed</code> and a timestamp is recorded.</p>
+          <p><strong>Seams agreed:</strong> public API on the insight service — <code>markReviewed(insightId)</code> — not the database layer.</p>
+          <p><strong>Cycle 1:</strong> Red — test calls <code>markReviewed</code> on a pending insight; expect status <code>reviewed</code>. Green — minimal handler update.</p>
+          <p><strong>Cycle 2:</strong> Red — test expects <code>reviewedAt</code> set. Green — add timestamp. Stop — no extra audit log until a ticket asks for it.</p>
+          <p>Review stage catches Feature Envy or duplication; TDD stage only proved the behavior.</p>
+        </div>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>

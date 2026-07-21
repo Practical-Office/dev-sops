@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/prototype · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Throwaway prototype to answer a design question." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="prototype" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/prototype</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="pill">BML: Optional</span></div>
+        </div>
+        <section class="skill-hero module">
+          <div class="module-header">
+            <div class="module-badge">/proto</div>
+            <div>
+              <h2>Prototype</h2>
+              <p class="module-time">Design-time skill · before or beside experiment Build</p>
+            </div>
+          </div>
+          <p>Throwaway code that answers a <strong>question</strong>. The question decides the shape — logic/state exploration or UI exploration. Getting the branch wrong wastes the whole prototype.</p>
+          <div class="pill-row">
+            <a class="pill" href="https://practical-office.github.io/bml-onboarding/">← Module 5: Running an experiment</a>
+            <a class="pill" href="implement.html">/implement</a>
+          </div>
+        </section>
+
+        <div class="content-block">
+          <h3>Why</h3>
+          <p>Experiment Builds should be thin. If the team cannot yet state how a state machine behaves or which UI layout carries the insight, shipping production code is expensive guessing. A prototype buys a concrete artifact to react to — minutes, not sprints.</p>
+          <p>Validated decisions fold into the real experiment issue and Build. The prototype itself is captured as a primary source on a throwaway branch; main keeps only the decision.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>When</h3>
+          <ul>
+            <li><strong>Logic branch:</strong> “Does this logic / state model feel right?” Hard cases are easier to push through in a tiny interactive terminal app than on paper.</li>
+            <li><strong>UI branch:</strong> “What should this look like?” Several radically different UI variations on one route, switchable via URL param and a floating bar.</li>
+            <li>Wayfinder <code>prototype</code> tickets that need something concrete to discuss (HITL)</li>
+            <li>Before <code>/to-spec</code> when the unknown is shape, not requirements volume</li>
+          </ul>
+          <p><strong>Not for</strong> production experiment delivery, persistence-by-default systems, or questions already settled by the issue template.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>How</h3>
+          <h3 style="margin-top:1rem;font-size:1rem">1. Pick a branch</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Question</th><th>Branch</th><th>Artifact</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Does this logic / state model feel right?</td>
+                  <td><strong>Logic</strong></td>
+                  <td>Tiny terminal app pushing the state machine through edge cases</td>
+                </tr>
+                <tr>
+                  <td>What should this look like?</td>
+                  <td><strong>UI</strong></td>
+                  <td>Multiple UI variants on one route, switchable at runtime</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>If ambiguous and the user is unreachable: default to logic for backend modules, UI for pages/components — state the assumption at the top of the prototype.</p>
+
+          <h3 style="margin-top:1rem;font-size:1rem">2. Build throwaway (both branches)</h3>
+          <ol>
+            <li>Locate code near where it will be used; name it obviously as prototype, not production.</li>
+            <li><strong>One command to run</strong> — <code>pnpm &lt;name&gt;</code>, <code>python &lt;path&gt;</code>, etc.</li>
+            <li><strong>No persistence by default.</strong> State in memory. Scratch DB/file only if persistence is what you’re checking — mark “PROTOTYPE — wipe me.”</li>
+            <li><strong>Skip polish.</strong> No tests, minimal error handling, no abstractions beyond runnable.</li>
+            <li><strong>Surface state.</strong> After every action (logic) or variant switch (UI), show full relevant state.</li>
+            <li><strong>Capture when done.</strong> Fold verdict into real code; commit prototype to throwaway branch; pointer on the issue; record question + answer.</li>
+          </ol>
+        </div>
+
+        <div class="content-block">
+          <h3>Inputs / outputs</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Inputs</th><th>Outputs</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Sharp design question (logic or UI)</td>
+                  <td>Runnable throwaway artifact marked as prototype</td>
+                </tr>
+                <tr>
+                  <td>Surrounding module or page context</td>
+                  <td>Visible state after each interaction or variant switch</td>
+                </tr>
+                <tr>
+                  <td>Human reactions during HITL session</td>
+                  <td>Verdict recorded on experiment or wayfinder ticket</td>
+                </tr>
+                <tr>
+                  <td>Project task runner conventions</td>
+                  <td>Throwaway branch + context pointer; validated decision in main path</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="failure-modes">
+          <h3>Anti-patterns</h3>
+          <ul>
+            <li><strong>Wrong branch.</strong> Building UI polish when the open question is state transitions (or vice versa).</li>
+            <li><strong>Prototype creep.</strong> Adding persistence, tests, and error handling — you’re building the experiment by accident.</li>
+            <li><strong>Anonymous throwaway.</strong> Code that looks like production; the next agent ships it verbatim.</li>
+            <li><strong>No capture.</strong> Learning dies in chat; issue never records the decision the prototype settled.</li>
+            <li><strong>Prototype instead of Measure.</strong> Using throwaway demos to guess customer behavior — that still needs a real experiment and metrics.</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h3>Micro-scenario</h3>
+          <p><strong>Logic branch:</strong> An experiment will gate “acted on insight” on a three-state flow: <code>delivered → opened → acted</code>. Can a user act without open? Team is unsure.</p>
+          <p>Prototype: 50-line terminal script. Keys: deliver, open, act, reset. Prints full state after each key. Team discovers <code>acted</code> without <code>opened</code> is allowed — hypothesis table updated before Build.</p>
+          <p><strong>UI branch:</strong> Same experiment needs an in-app insight card. Three layouts: dense table, hero summary, chat-style thread. URL <code>?variant=1|2|3</code> + bottom bar. Founder picks variant 2; spec references it; prototype branch linked from issue.</p>
+        </div>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>

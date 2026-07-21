@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/to-tickets · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Break a spec into independently grabbable issues." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="to-tickets" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/to-tickets</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="status-chip">BML: Required</span> <span class="status-chip">Update: Required</span></div>
+        </div>
+        <section class="hero skill-hero">
+          <span class="status-chip">Cursor skill</span>
+          <div class="module-header" style="border:none;padding:0;margin:1rem 0 0">
+            <span class="module-badge">/to-tickets</span>
+            <div>
+              <h1>To <em>tickets</em></h1>
+              <p class="hero-lede">Break a plan or spec into tracer-bullet vertical slices — each ticket declares what blocks it — then publish to the tracker and work the frontier.</p>
+            </div>
+          </div>
+        </section>
+
+        <article class="content-block" id="why">
+          <p class="eyebrow">Why</p>
+          <h2>Demoable slices, explicit dependencies</h2>
+          <p>Horizontal tickets (“all backend,” then “all frontend”) stall validation and swamp context windows. <strong>to-tickets</strong> cuts narrow paths through every layer so each slice is verifiable on its own.</p>
+          <p>Blocking edges make parallel work safe: you always know what unblocks next. Wide mechanical refactors are the exception — sequenced expand–contract batches instead of forced vertical slices.</p>
+        </article>
+
+        <article class="content-block" id="when">
+          <p class="eyebrow">When</p>
+          <h2>Use this skill</h2>
+          <ul>
+            <li>After <a href="to-spec.html">to-spec</a> when the build needs more than one PR</li>
+            <li>When a conversation already contains an approved plan worth slicing</li>
+            <li>Before the first <a href="implement.html">implement</a> on a multi-part build</li>
+          </ul>
+          <p><strong>Skip</strong> when the spec fits a single ticket — implement directly.</p>
+        </article>
+
+        <article class="content-block" id="how">
+          <p class="eyebrow">How</p>
+          <h2>Steps</h2>
+          <ol>
+            <li><strong>Gather context</strong> — conversation, or fetch spec issue/path if passed as argument.</li>
+            <li><strong>Explore codebase (optional)</strong> — glossary, ADRs, prefactor opportunities (“make the change easy, then make the easy change”).</li>
+            <li><strong>Draft vertical slices</strong> — each completes a thin end-to-end path (schema, API, UI, tests); demoable alone; one context window; prefactor tickets first if needed.</li>
+            <li><strong>Assign blocking edges</strong> — list which tickets gate each other; no blockers = can start immediately.</li>
+            <li><strong>Quiz the human</strong> — numbered list with title, blocked-by, and what it delivers; ask about granularity and edges; iterate until approved.</li>
+            <li><strong>Publish</strong> — one issue per ticket (or one file per ticket locally), dependency order, native blocking links where available; <code>ready-for-agent</code> on each; do not close parent spec.</li>
+            <li><strong>Work the frontier</strong> — any ticket whose blockers are done; with <a href="implement.html">implement</a>, one at a time, clear context between.</li>
+          </ol>
+        </article>
+
+        <article class="content-block" id="io">
+          <p class="eyebrow">Inputs / outputs</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Inputs</th><th>Outputs</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Published spec or plan; optional codebase exploration; human approval on breakdown</td>
+                  <td>Set of tickets with titles, acceptance criteria, blocked-by edges, <code>ready-for-agent</code>; parent issue unchanged; ordered frontier for implement</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="content-block" id="anti-patterns">
+          <p class="eyebrow">Anti-patterns</p>
+          <h2>What to avoid</h2>
+          <ul>
+            <li><strong>Horizontal layers</strong> — “Database migration ticket” with no user-visible outcome.</li>
+            <li><strong>Oversized slices</strong> — Tickets that cannot land in one agent session.</li>
+            <li><strong>Wrong blockers</strong> — Ticket B blocked by C when B could start independently.</li>
+            <li><strong>Closing the parent spec</strong> — Parent stays open as umbrella reference.</li>
+            <li><strong>Stale paths in tickets</strong> — Same rule as specs; behavior descriptions over file lists.</li>
+            <li><strong>Forcing vertical slices on wide refactors</strong> — Use expand–contract sequencing instead.</li>
+          </ul>
+        </article>
+
+        <article class="content-block" id="micro-scenario">
+          <p class="eyebrow">Micro-scenario</p>
+          <h2>Abstract example</h2>
+          <div class="section-card">
+            <p>Spec #41 covers a onboarding checklist with analytics. <code>/to-tickets</code> proposes:</p>
+            <ol>
+              <li><strong>Expose progress API + stub UI</strong> — Blocked by: none. Delivers: API returns empty checklist; UI shell renders.</li>
+              <li><strong>Render items + emit events</strong> — Blocked by: #1. Delivers: user sees checklist; completion fires event.</li>
+              <li><strong>Operator metrics readout</strong> — Blocked by: #2. Delivers: internal page shows completion counts.</li>
+            </ol>
+            <p>Human asks to merge #1 and #2 — agent explains demo risk; human keeps three tickets. Published as #42–#44 with blocking links. Frontier: start #42 with <code>/implement</code>.</p>
+          </div>
+        </article>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>

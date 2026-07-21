@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skills · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Full reference for every Cursor skill used across BML, Bug, and Update SOPs." />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dev-sops.css" />
+</head>
+<body data-page="skills">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">Skills</div>
+      </header>
+      <main class="content">
+        <section class="hero">
+          <span class="status-chip">Cursor skills</span>
+          <h1>Skills <em>reference</em></h1>
+          <p class="hero-lede">Canonical write-ups for every skill invoked across our three SOPs. Each page notes which loops require or optionally use it.</p>
+        </section>
+
+        <div class="section-card">
+          <p class="eyebrow">Shared</p>
+          <div class="card-grid">
+            <a class="stat-card" href="skills/grill-with-docs.html"><strong>/grill-with-docs</strong><span>BML Required · Bug Optional · Update Required</span></a>
+            <a class="stat-card" href="skills/grilling.html"><strong>/grilling</strong><span>Optional in all loops</span></a>
+            <a class="stat-card" href="skills/tdd.html"><strong>/tdd</strong><span>Bug Required · BML/Update Optional</span></a>
+            <a class="stat-card" href="skills/code-review.html"><strong>/code-review</strong><span>Bug Required · BML/Update Optional</span></a>
+            <a class="stat-card" href="skills/wayfinder.html"><strong>/wayfinder</strong><span>Optional · issue tracker discipline</span></a>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <p class="eyebrow">Build (BML / Update)</p>
+          <div class="card-grid">
+            <a class="stat-card" href="skills/to-spec.html"><strong>/to-spec</strong><span>BML Required · Update Required</span></a>
+            <a class="stat-card" href="skills/to-tickets.html"><strong>/to-tickets</strong><span>BML Required · Update Required</span></a>
+            <a class="stat-card" href="skills/implement.html"><strong>/implement</strong><span>BML Required · Update Required</span></a>
+            <a class="stat-card" href="skills/prototype.html"><strong>/prototype</strong><span>BML Optional · design questions</span></a>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <p class="eyebrow">Bug</p>
+          <div class="card-grid">
+            <a class="stat-card" href="skills/diagnosing-bugs.html"><strong>/diagnosing-bugs</strong><span>Bug Required · six-phase loop</span></a>
+            <a class="stat-card" href="skills/triage.html"><strong>/triage</strong><span>Bug Required · before diagnosis</span></a>
+          </div>
+        </div>
+
+        <div class="hard-truth">
+          <h3>Skill chains</h3>
+          <ul>
+            <li><strong>BML / Update Build:</strong> <code>/grill-with-docs</code> → <code>/to-spec</code> → <code>/to-tickets</code> → <code>/implement</code></li>
+            <li><strong>Bug fix:</strong> <code>/triage</code> → <code>/diagnosing-bugs</code> → <code>/tdd</code> → <code>/code-review</code></li>
+          </ul>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="js/dev-sops.js"></script>
+</body>
+</html>

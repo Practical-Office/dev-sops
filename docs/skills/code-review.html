@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/code-review · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Two-axis review: Standards and Spec." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="code-review" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/code-review</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="pill">BML: Optional</span> <span class="status-chip">Bug: Required</span> <span class="pill">Update: Optional</span></div>
+        </div>
+        <section class="skill-hero module">
+          <div class="module-header">
+            <div class="module-badge">/review</div>
+            <div>
+              <h2>Code review</h2>
+              <p class="module-time">Build-phase skill · invoked by <a href="implement.html"><code>/implement</code></a></p>
+            </div>
+          </div>
+          <p>Review the diff since a fixed point along two axes — <strong>Standards</strong> (repo conventions + smell baseline) and <strong>Spec</strong> (does the change match what was asked?). Report them side by side; never merge the axes.</p>
+          <div class="pill-row">
+            <a class="pill" href="https://practical-office.github.io/bml-onboarding/">← Module 4: Build skills</a>
+            <a class="pill" href="tdd.html">/tdd</a>
+            <a class="pill" href="implement.html">/implement</a>
+          </div>
+        </section>
+
+        <div class="content-block">
+          <h3>Why</h3>
+          <p>A change can pass one axis and fail the other. Code that follows every standard but implements the wrong thing is still wrong. Code that matches the spec but violates project conventions creates drag for the next experiment Build.</p>
+          <p>Separating Standards and Spec stops one axis from masking the other. In Build-Measure-Learn work, the spec source is usually the experiment issue, a published spec from <code>/to-spec</code>, or a tracer-bullet ticket from <code>/to-tickets</code>.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>When</h3>
+          <ul>
+            <li>After <a href="tdd.html"><code>/tdd</code></a> cycles complete for a ticket — <code>/implement</code> invokes review before commit</li>
+            <li>User asks to review a branch, PR, or WIP changes since a commit, tag, or branch</li>
+            <li>Before merging experiment Build work that affects what Measure will observe</li>
+          </ul>
+          <p><strong>Not for</strong> Learn-phase decisions, metric interpretation, or hypothesis validation — those are human-owned (see <a href="https://practical-office.github.io/bml-onboarding/">Module 5</a>).</p>
+        </div>
+
+        <div class="content-block">
+          <h3>How</h3>
+          <ol>
+            <li><strong>Pin the fixed point.</strong> Commit SHA, branch, tag, <code>main</code>, or <code>HEAD~N</code>. Diff: <code>git diff &lt;fixed-point&gt;...HEAD</code> (three-dot). Confirm non-empty before proceeding.</li>
+            <li><strong>Identify the spec source.</strong> Issue refs in commits → fetch from tracker; else user path; else spec under <code>docs/</code> or <code>specs/</code>. If none, Spec axis reports “no spec available.”</li>
+            <li><strong>Identify standards sources.</strong> <code>CODING_STANDARDS.md</code>, <code>CONTRIBUTING.md</code>, etc. Always include the Fowler smell baseline (repo standards override smells).</li>
+            <li><strong>Run both axes in parallel.</strong> Standards sub-agent: violations + smells per hunk. Spec sub-agent: missing requirements, scope creep, wrong implementations — quote spec lines.</li>
+            <li><strong>Aggregate.</strong> Present under <code>## Standards</code> and <code>## Spec</code> headings. One-line summary: count per axis, worst issue per axis. Do not pick a single winner across axes.</li>
+            <li><strong>Fix and commit.</strong> Address findings; <code>/implement</code> commits when both axes are acceptable for the ticket scope.</li>
+          </ol>
+        </div>
+
+        <div class="content-block">
+          <h3>Inputs / outputs</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Inputs</th><th>Outputs</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Fixed point ref + <code>git diff …HEAD</code></td>
+                  <td>Standards report: documented violations + labelled smells</td>
+                </tr>
+                <tr>
+                  <td>Originating issue, PRD, or ticket body</td>
+                  <td>Spec report: gaps, creep, suspicious implementations</td>
+                </tr>
+                <tr>
+                  <td>Repo standards docs + smell baseline</td>
+                  <td>Side-by-side findings (not merged or reranked)</td>
+                </tr>
+                <tr>
+                  <td>Commit list <code>git log fixed..HEAD --oneline</code></td>
+                  <td>Summary line: totals + worst issue per axis</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>Standards smell baseline (judgement calls)</h3>
+          <p>Always apply unless repo docs endorse the pattern. Each smell is a heuristic, not a hard violation.</p>
+          <ul>
+            <li><strong>Mysterious Name</strong> — rename; murky design if no honest name exists</li>
+            <li><strong>Duplicated Code</strong> — extract shared shape</li>
+            <li><strong>Feature Envy</strong> — move method to the data it uses</li>
+            <li><strong>Data Clumps / Primitive Obsession</strong> — introduce a small type</li>
+            <li><strong>Repeated Switches</strong> — polymorphism or shared map</li>
+            <li><strong>Shotgun Surgery / Divergent Change</strong> — gather or split modules by change reason</li>
+            <li><strong>Speculative Generality</strong> — delete unused abstraction</li>
+            <li><strong>Message Chains / Middle Man</strong> — hide navigation or remove delegate layer</li>
+            <li><strong>Refused Bequest</strong> — prefer composition over bad inheritance</li>
+          </ul>
+        </div>
+
+        <div class="failure-modes">
+          <h3>Anti-patterns</h3>
+          <ul>
+            <li><strong>Single-axis review.</strong> “Looks clean” while implementing the wrong metric event ID.</li>
+            <li><strong>Spec axis without a spec.</strong> Guessing intent from code shape instead of fetching the issue.</li>
+            <li><strong>Merging findings.</strong> Ranking Standards issues as more important than Spec misses wrong behavior.</li>
+            <li><strong>Review as Learn.</strong> Using review to decide if the experiment succeeded — that needs Measure numbers.</li>
+            <li><strong>Refactor theater.</strong> Large structural changes during experiment Build that the ticket did not require.</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h3>Micro-scenario</h3>
+          <p>Ticket: “Emit <code>insight.acted</code> when user completes mark-reviewed.” Fixed point: <code>main</code>.</p>
+          <p><strong>Standards axis:</strong> flags Feature Envy — handler reaches into three repository fields instead of calling <code>insight.markReviewed()</code>.</p>
+          <p><strong>Spec axis:</strong> passes event name and trigger; flags missing <code>tenant_id</code> prop required by the metrics dictionary.</p>
+          <p>Fix both before commit. Neither axis alone caught the full gap. Learn column still waits for four weeks of act-rate data.</p>
+        </div>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/triage · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Route bug reports: category, severity, priority, and triage state." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="triage" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/triage</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="status-chip">Bug: Required</span></div>
+        </div>
+        
+        <section class="hero skill-hero">
+          <span class="status-chip">Cursor skill</span>
+          <div class="module-header" style="border:none;padding:0;margin:1rem 0 0">
+            <span class="module-badge">/triage</span>
+            <div>
+              <h1>Triage</h1>
+              <p class="hero-lede">Confirm the claim, set Severity and Priority separately, pick a Triage State, and route to human or agent.</p>
+            </div>
+          </div>
+        </section>
+        <article class="content-block" id="why">
+          <p class="eyebrow">Why</p>
+          <h2>Severity ≠ Priority</h2>
+          <p>Severity is impact; Priority is scheduling. Mixing them burns capacity. Triage also decides whether the ticket is ready for work or needs more info.</p>
+        </article>
+        <article class="content-block" id="when">
+          <p class="eyebrow">When</p>
+          <h2>Use this skill</h2>
+          <ul>
+            <li>A new bug report lands (or returns from <code>needs-info</code>)</li>
+            <li>Reporter suggested Severity/Priority — triage confirms or changes</li>
+            <li>Category might be enhancement, not bug — route correctly</li>
+          </ul>
+        </article>
+        <article class="content-block" id="how">
+          <p class="eyebrow">How</p>
+          <h2>What triage sets</h2>
+          <ul>
+            <li><strong>Category</strong> — exactly one: <code>bug</code> or <code>enhancement</code></li>
+            <li><strong>Severity</strong> — <code>severity/s1</code> … <code>severity/s4</code></li>
+            <li><strong>Priority</strong> — <code>priority/p0</code> … <code>priority/p3</code></li>
+            <li><strong>State</strong> — <code>needs-triage</code> · <code>needs-info</code> · <code>ready-for-agent</code> · <code>ready-for-human</code> · <code>wontfix</code></li>
+          </ul>
+          <p>Work starts only at <code>ready-for-agent</code> or <code>ready-for-human</code>. Then route to <a href="diagnosing-bugs.html">/diagnosing-bugs</a>.</p>
+        </article>
+        <article class="content-block" id="io">
+          <p class="eyebrow">Inputs / outputs</p>
+          <div class="table-wrap"><table><thead><tr><th>Inputs</th><th>Outputs</th></tr></thead><tbody><tr><td>Bug report (template fields); optional grill session</td><td>Category; Severity; Priority; Triage State; routing decision</td></tr></tbody></table></div>
+        </article>
+        <article class="content-block" id="anti-patterns">
+          <p class="eyebrow">Anti-patterns</p>
+          <h2>What to avoid</h2>
+          <ul>
+            <li>Starting <code>/diagnosing-bugs</code> while still <code>needs-info</code></li>
+            <li>Collapsing Severity and Priority into one P1–P4 scale</li>
+            <li>Guessing missing template fields instead of grilling or returning</li>
+          </ul>
+        </article>
+        <article class="content-block" id="micro-scenario">
+          <p class="eyebrow">Micro-scenario</p>
+          <h2>Abstract example</h2>
+          <div class="section-card">
+            <p>A reporter files “login broken” with no steps. Triage moves to <code>needs-info</code>, asks for repro steps via comment. On return, confirms <code>bug</code>, sets <code>severity/s2</code> and <code>priority/p1</code>, state <code>ready-for-agent</code>, and assigns the card.</p>
+          </div>
+        </article>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/diagnosing-bugs · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Six-phase Diagnosis Loop for production bugs." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="diagnosing-bugs" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/diagnosing-bugs</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="status-chip">Bug: Required</span></div>
+        </div>
+        
+        <section class="hero skill-hero">
+          <span class="status-chip">Cursor skill</span>
+          <div class="module-header" style="border:none;padding:0;margin:1rem 0 0">
+            <span class="module-badge">/diagnosing-bugs</span>
+            <div>
+              <h1>Diagnosing <em>bugs</em></h1>
+              <p class="hero-lede">Six-phase Diagnosis Loop that turns a confirmed bug into root cause and a regression-ready fix path.</p>
+            </div>
+          </div>
+        </section>
+        <article class="content-block" id="why">
+          <p class="eyebrow">Why</p>
+          <h2>Reproducibility before patches</h2>
+          <p>Guess-and-patch creates regressions. The Diagnosis Loop forces a deterministic feedback command, a minimized reproduce, ranked hypotheses, and one-variable instrumentation before the fix.</p>
+        </article>
+        <article class="content-block" id="when">
+          <p class="eyebrow">When</p>
+          <h2>Use this skill</h2>
+          <ul>
+            <li>Triage State is <code>ready-for-agent</code> or <code>ready-for-human</code></li>
+            <li>Bug report template is complete (or grilled to completion)</li>
+            <li>You are about to change production code for a defect</li>
+          </ul>
+          <p><strong>Skip</strong> only for trivial typos with an obvious red test — still run a minimal reproduce.</p>
+        </article>
+        <article class="content-block" id="how">
+          <p class="eyebrow">How</p>
+          <h2>Six phases</h2>
+          <ol>
+            <li><strong>Feedback loop</strong> — one red-capable, deterministic command</li>
+            <li><strong>Reproduce + minimise</strong> — shrink until every step is load-bearing</li>
+            <li><strong>Hypothesise</strong> — 3–5 ranked, falsifiable hypotheses</li>
+            <li><strong>Instrument</strong> — one variable at a time; tagged probes</li>
+            <li><strong>Fix + regression test</strong> — hand off to <a href="tdd.html">/tdd</a></li>
+            <li><strong>Cleanup + post-mortem</strong> — green loop, remove debug harnesses, ticket RCA notes</li>
+          </ol>
+        </article>
+        <article class="content-block" id="io">
+          <p class="eyebrow">Inputs / outputs</p>
+          <div class="table-wrap"><table><thead><tr><th>Inputs</th><th>Outputs</th></tr></thead><tbody><tr><td>Complete bug ticket; triage labels; environment details</td><td>Root cause; diagnosis notes; red test; fix path for <a href="tdd.html">/tdd</a></td></tr></tbody></table></div>
+        </article>
+        <article class="content-block" id="anti-patterns">
+          <p class="eyebrow">Anti-patterns</p>
+          <h2>What to avoid</h2>
+          <ul>
+            <li>Fixing before a reliable red signal</li>
+            <li>Skipping minimise — debugging the whole system at once</li>
+            <li>Jumping to <code>/implement</code> or a bare PR without diagnosis notes</li>
+          </ul>
+        </article>
+        <article class="content-block" id="micro-scenario">
+          <p class="eyebrow">Micro-scenario</p>
+          <h2>Abstract example</h2>
+          <div class="section-card">
+            <p>A ticket reports checkout fails on Safari only. Triage sets <code>ready-for-agent</code>. The agent runs <code>/diagnosing-bugs</code>, finds a deterministic Playwright repro, minimises to one API call, ranks three hypotheses, instruments the response parser, confirms a date-format mismatch, and hands off to <code>/tdd</code> with a failing unit test at the parser seam.</p>
+          </div>
+        </article>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>

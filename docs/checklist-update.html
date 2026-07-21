@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Update Checklist · Dev SOPs</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dev-sops.css" />
+</head>
+<body data-page="checklist-update">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">Update Checklist</div>
+        <div class="topbar-actions">
+          <button type="button" class="btn btn-ghost btn-sm" id="resetChecklist">Reset checklist</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="window.print()">Print</button>
+        </div>
+      </header>
+      <main class="content">
+        <section class="hero">
+          <span class="status-chip">Ticket Type: Update</span>
+          <h1>Update Handling <em>checklist</em></h1>
+          <p class="hero-lede">Preflight on Team Work intake; Run follows the <a href="https://practical-office.github.io/update-sop/">Update Handling SOP</a>.</p>
+        </section>
+
+        <div class="section-card">
+          <h2>Preflight</h2>
+          <ul class="checklist">
+            <li><label><input type="checkbox" data-checklist="upd-pf-type" /> Ticket Type is <code>Update</code> (not Bug or BML)</label></li>
+            <li><label><input type="checkbox" data-checklist="upd-pf-board" /> Card on Team Work (project 2)</label></li>
+            <li><label><input type="checkbox" data-checklist="upd-pf-template" /> Update template filled: Decided outcome, Why, Acceptance criteria, Promotion check</label></li>
+            <li><label><input type="checkbox" data-checklist="upd-pf-skills" /> Skills installed: <a href="skills/grill-with-docs.html">grill-with-docs</a>, <a href="skills/to-spec.html">to-spec</a>, <a href="skills/to-tickets.html">to-tickets</a>, <a href="skills/implement.html">implement</a></label></li>
+            <li><label><input type="checkbox" data-checklist="upd-pf-promotion" /> Promotion check: no risky assumption — outcome already decided (no pass/kill criteria)</label></li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <h2>Run</h2>
+          <ol class="checklist" style="list-style:decimal;padding-left:1.25rem">
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="upd-r1" /> <strong>Intake.</strong> Ticket Type <code>Update</code> on Team Work; template complete.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="upd-r2" /> <strong>Grill (optional).</strong> Non-trivial scope: <a href="skills/grill-with-docs.html">/grill-with-docs</a> until aligned.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="upd-r3" /> <strong>Spec + tickets.</strong> Non-trivial: <a href="skills/to-spec.html">/to-spec</a> → <a href="skills/to-tickets.html">/to-tickets</a>.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="upd-r4" /> <strong>Implement.</strong> <a href="skills/implement.html">/implement</a> (tiny Updates may skip straight here).</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="upd-r5" /> <strong>Acceptance verify.</strong> Checkboxes + decided outcome met — no fake Measure/Learn.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="upd-r6" /> <strong>Done.</strong> Close on Team Work.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="upd-r7" /> <strong>Promotion (if needed).</strong> Risky assumption appears → relabel BML, rewrite as experiment, move to BML Board.</label></li>
+          </ol>
+        </div>
+
+        <p class="footer-note"><a href="checklists.html">← All checklists</a> · <a href="https://practical-office.github.io/update-sop/">Living Update SOP</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="js/dev-sops.js"></script>
+</body>
+</html>

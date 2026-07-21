@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/to-spec · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Turn aligned understanding into an implementation spec." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="to-spec" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/to-spec</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="status-chip">BML: Required</span> <span class="status-chip">Update: Required</span></div>
+        </div>
+        <section class="hero skill-hero">
+          <span class="status-chip">Cursor skill</span>
+          <div class="module-header" style="border:none;padding:0;margin:1rem 0 0">
+            <span class="module-badge">/to-spec</span>
+            <div>
+              <h1>To <em>spec</em></h1>
+              <p class="hero-lede">Turn conversation context into a published spec (PRD) on the issue tracker — synthesize what you already know; do not re-interview.</p>
+            </div>
+          </div>
+        </section>
+
+        <article class="content-block" id="why">
+          <p class="eyebrow">Why</p>
+          <h2>Durable build contract</h2>
+          <p>After <a href="grill-with-docs.html">grill-with-docs</a>, the understanding lives in chat unless you capture it. <strong>to-spec</strong> freezes problem, solution, user stories, implementation decisions, testing decisions, and scope into a tracker issue agents and humans can execute against.</p>
+          <p>It also forces an explicit conversation about <strong>test seams</strong> — the public boundaries where behavior will be verified — before <a href="to-tickets.html">to-tickets</a> or <a href="implement.html">implement</a> begin.</p>
+        </article>
+
+        <article class="content-block" id="when">
+          <p class="eyebrow">When</p>
+          <h2>Use this skill</h2>
+          <ul>
+            <li>After grill-with-docs on a non-trivial Build experiment</li>
+            <li>When the experiment needs multiple PRs or layered work</li>
+            <li>Before <a href="to-tickets.html">to-tickets</a> splits work</li>
+          </ul>
+          <p><strong>Skip</strong> when the build is a single tiny PR — go to <a href="implement.html">implement</a>.</p>
+        </article>
+
+        <article class="content-block" id="how">
+          <p class="eyebrow">How</p>
+          <h2>Steps</h2>
+          <ol>
+            <li><strong>Explore the repo</strong> — current code state, domain glossary, ADRs in the touched area.</li>
+            <li><strong>Sketch test seams</strong> — prefer existing seams; propose new ones at the highest practical boundary; aim for as few seams as possible (ideally one). Confirm with the human.</li>
+            <li><strong>Write the spec</strong> using the standard sections: Problem Statement, Solution, User Stories (long numbered list), Implementation Decisions, Testing Decisions, Out of Scope, Further Notes.</li>
+            <li><strong>Avoid stale detail</strong> — no file paths or code snippets unless a prototype encodes a decision more precisely than prose (trim to decision-rich parts).</li>
+            <li><strong>Publish</strong> — create the issue on the project tracker; apply <code>ready-for-agent</code> triage label.</li>
+          </ol>
+        </article>
+
+        <article class="content-block" id="io">
+          <p class="eyebrow">Inputs / outputs</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Inputs</th><th>Outputs</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Grilled conversation; experiment issue; repo context; confirmed test seams</td>
+                  <td>Published spec issue with problem/solution/stories/decisions/testing/out-of-scope; <code>ready-for-agent</code> label; seam agreement for downstream <a href="tdd.html">tdd</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="content-block" id="anti-patterns">
+          <p class="eyebrow">Anti-patterns</p>
+          <h2>What to avoid</h2>
+          <ul>
+            <li><strong>Re-interviewing</strong> — Facts and decisions should come from prior grill; only confirm seams.</li>
+            <li><strong>File-path specs</strong> — Paths rot; describe modules and interfaces instead.</li>
+            <li><strong>Thin user stories</strong> — Three stories for a large feature means tickets will guess scope.</li>
+            <li><strong>Skipping seam check</strong> — Tests will attach to random internals later.</li>
+            <li><strong>Publishing without ready-for-agent</strong> — Downstream agents cannot grab work reliably.</li>
+          </ul>
+        </article>
+
+        <article class="content-block" id="micro-scenario">
+          <p class="eyebrow">Micro-scenario</p>
+          <h2>Abstract example</h2>
+          <div class="section-card">
+            <p>After grilling issue #40, the engineer runs <code>/to-spec</code>. The agent reads onboarding modules and <code>CONTEXT.md</code>, then proposes one seam: the public REST endpoint that returns checklist progress.</p>
+            <p>The human agrees. The spec publishes as issue #41 with fourteen user stories, decisions on event payload shape (no file paths), testing decisions referencing similar API tests elsewhere, and explicit out-of-scope (“no admin editing of checklist items”).</p>
+            <p>Label <code>ready-for-agent</code> applied. Parent experiment #40 stays open. Next: <code>/to-tickets</code> against #41.</p>
+          </div>
+        </article>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>

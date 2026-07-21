@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Check Lists · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Preflight and run checklists for BML, Bug, and Update SOPs." />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dev-sops.css" />
+</head>
+<body data-page="checklists">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">Check List</div>
+      </header>
+      <main class="content">
+        <section class="hero">
+          <span class="status-chip">Preflight + Run</span>
+          <h1>Check <em>lists</em></h1>
+          <p class="hero-lede">Print-friendly checklists with saved progress. Preflight before you start; Run follows each living SOP spine.</p>
+        </section>
+
+        <div class="card-grid">
+          <a class="stat-card" href="checklist-bml.html">
+            <strong>Build-Measure-Learn</strong>
+            <span>Risky assumption → experiment → Learn / kill</span>
+          </a>
+          <a class="stat-card" href="checklist-bug.html">
+            <strong>Bug Handling</strong>
+            <span>Report → Triage → Diagnose → Fix → RCA</span>
+          </a>
+          <a class="stat-card" href="checklist-update.html">
+            <strong>Update Handling</strong>
+            <span>Decided outcome → Build → Acceptance verify</span>
+          </a>
+        </div>
+
+        <div class="section-card">
+          <h3>When to use which</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Ticket Type</th><th>Checklist</th><th>Board</th></tr></thead>
+              <tbody>
+                <tr><td><code>BML</code></td><td><a href="checklist-bml.html">BML checklist</a></td><td>Team Work → BookIQ BML Board</td></tr>
+                <tr><td><code>Bug</code></td><td><a href="checklist-bug.html">Bug checklist</a></td><td>Team Work (project 2)</td></tr>
+                <tr><td><code>Update</code></td><td><a href="checklist-update.html">Update checklist</a></td><td>Team Work (project 2)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="js/dev-sops.js"></script>
+</body>
+</html>

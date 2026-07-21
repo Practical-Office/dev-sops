@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bug Checklist · Dev SOPs</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dev-sops.css" />
+</head>
+<body data-page="checklist-bug">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">Bug Checklist</div>
+        <div class="topbar-actions">
+          <button type="button" class="btn btn-ghost btn-sm" id="resetChecklist">Reset checklist</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="window.print()">Print</button>
+        </div>
+      </header>
+      <main class="content">
+        <section class="hero">
+          <span class="status-chip">Ticket Type: Bug</span>
+          <h1>Bug Handling <em>checklist</em></h1>
+          <p class="hero-lede">Preflight on Team Work intake; Run follows the <a href="https://practical-office.github.io/bug-handling-sop/">Bug Handling SOP</a>.</p>
+        </section>
+
+        <div class="section-card">
+          <h2>Preflight</h2>
+          <ul class="checklist">
+            <li><label><input type="checkbox" data-checklist="bug-pf-type" /> Ticket Type is <code>Bug</code> (not Update or BML)</label></li>
+            <li><label><input type="checkbox" data-checklist="bug-pf-board" /> Card on Team Work (project 2)</label></li>
+            <li><label><input type="checkbox" data-checklist="bug-pf-template" /> Bug report template filled: Environment, Repro steps, Expected vs Actual, Severity/Priority suggestions</label></li>
+            <li><label><input type="checkbox" data-checklist="bug-pf-skills" /> Skills installed: <a href="skills/triage.html">triage</a>, <a href="skills/diagnosing-bugs.html">diagnosing-bugs</a>, <a href="skills/tdd.html">tdd</a>, <a href="skills/code-review.html">code-review</a></label></li>
+            <li><label><input type="checkbox" data-checklist="bug-pf-severity" /> Severity and Priority understood as separate axes</label></li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <h2>Run</h2>
+          <ol class="checklist" style="list-style:decimal;padding-left:1.25rem">
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bug-r1" /> <strong>Report.</strong> File with mandatory template; optional <a href="skills/grill-with-docs.html">/grill-with-docs</a> if vague.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bug-r2" /> <strong>Triage.</strong> <a href="skills/triage.html">/triage</a>: category, Severity, Priority, Triage State.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bug-r3" /> <strong>Ready gate.</strong> Work starts only at <code>ready-for-agent</code> or <code>ready-for-human</code>.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bug-r4" /> <strong>Diagnose.</strong> <a href="skills/diagnosing-bugs.html">/diagnosing-bugs</a>: feedback loop → reproduce → hypothesise → instrument.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bug-r5" /> <strong>Fix.</strong> <a href="skills/tdd.html">/tdd</a> at agreed seam; regression test included.</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bug-r6" /> <strong>Review.</strong> PR → <a href="skills/code-review.html">/code-review</a> (Standards ‖ Spec).</label></li>
+            <li style="margin-bottom:0.75rem"><label><input type="checkbox" data-checklist="bug-r7" /> <strong>Close.</strong> QA verifies; Root Cause + Prevention on ticket; close.</label></li>
+          </ol>
+        </div>
+
+        <p class="footer-note"><a href="checklists.html">← All checklists</a> · <a href="https://practical-office.github.io/bug-handling-sop/">Living Bug SOP</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="js/dev-sops.js"></script>
+</body>
+</html>

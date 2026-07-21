@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/implement · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Build from tickets with TDD and code review inside." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="implement" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/implement</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="status-chip">BML: Required</span> <span class="status-chip">Update: Required</span></div>
+        </div>
+        <section class="hero skill-hero">
+          <span class="status-chip">Cursor skill</span>
+          <div class="module-header" style="border:none;padding:0;margin:1rem 0 0">
+            <span class="module-badge">/implement</span>
+            <div>
+              <h1>Implement</h1>
+              <p class="hero-lede">Build the work described by a spec or ticket — test at pre-agreed seams, review against standards and spec, then commit.</p>
+            </div>
+          </div>
+        </section>
+
+        <article class="content-block" id="why">
+          <p class="eyebrow">Why</p>
+          <h2>Close one ticket completely</h2>
+          <p><strong>implement</strong> is the execution cap on the Build chain. It turns an unblocked ticket into merged-quality work: behavior at public seams, typecheck and tests green, standards and spec reviewed, changes committed.</p>
+          <p>It owns <a href="tdd.html">tdd</a> and <a href="code-review.html">code-review</a> — do not run bare tdd in place of implement for experiment builds.</p>
+        </article>
+
+        <article class="content-block" id="when">
+          <p class="eyebrow">When</p>
+          <h2>Use this skill</h2>
+          <ul>
+            <li>Any unblocked ticket from <a href="to-tickets.html">to-tickets</a> frontier</li>
+            <li>Tiny builds skipped straight from experiment issue (optional grill first)</li>
+            <li>Measure-phase work only when instrumentation is broken — still one focused ticket</li>
+          </ul>
+          <p>Clear context between tickets. One implement invocation per ticket.</p>
+        </article>
+
+        <article class="content-block" id="how">
+          <p class="eyebrow">How</p>
+          <h2>Steps</h2>
+          <ol>
+            <li><strong>Read the ticket</strong> — what to build, acceptance criteria, blocked-by (should be clear).</li>
+            <li><strong>Implement with <a href="tdd.html">tdd</a></strong> — red → green at pre-agreed seams from spec; one vertical slice per cycle; typecheck and single test files regularly.</li>
+            <li><strong>Full test suite once</strong> — at the end of the ticket, before review.</li>
+            <li><strong>Run <a href="code-review.html">code-review</a></strong> — parallel Standards + Spec axes on the diff since the fixed point; address findings.</li>
+            <li><strong>Commit</strong> — to the current branch with message tied to the ticket.</li>
+            <li><strong>Stop</strong> — do not start the next blocked ticket in the same context; return to frontier.</li>
+          </ol>
+        </article>
+
+        <article class="content-block" id="io">
+          <p class="eyebrow">Inputs / outputs</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Inputs</th><th>Outputs</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>One unblocked ticket or tiny spec; pre-agreed test seams; repo standards docs</td>
+                  <td>Implemented behavior; tests at seams; review-passing diff; git commit; ticket ready to close</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="content-block" id="anti-patterns">
+          <p class="eyebrow">Anti-patterns</p>
+          <h2>What to avoid</h2>
+          <ul>
+            <li><strong>Bare tdd without implement</strong> — Missing standards/spec review and commit discipline.</li>
+            <li><strong>Testing unconfirmed seams</strong> — Couples tests to internals; breaks on refactor.</li>
+            <li><strong>Multi-ticket sessions</strong> — Context pollution; acceptance criteria blur.</li>
+            <li><strong>Skipping final suite</strong> — Single-file green is not integration green.</li>
+            <li><strong>Commit before code-review</strong> — Review is part of the skill, not optional polish.</li>
+            <li><strong>Scope creep</strong> — Ticket said “emit event”; implement does not rebuild the dashboard.</li>
+          </ul>
+        </article>
+
+        <article class="content-block" id="micro-scenario">
+          <p class="eyebrow">Micro-scenario</p>
+          <h2>Abstract example</h2>
+          <div class="section-card">
+            <p>Ticket #42: “Expose progress API + stub UI.” Seam: public GET <code>/onboarding/progress</code>.</p>
+            <p>Agent writes failing API test → minimal handler → green. Typecheck. Adds empty UI component wired to endpoint. Single-file tests throughout; full suite once.</p>
+            <p><code>/code-review</code> against <code>main</code>: Standards notes a missing error shape; Spec confirms only empty checklist required. Fix applied.</p>
+            <p>Commit: “#42 expose onboarding progress API and stub UI.” Ticket closed; frontier advances to #43 in a fresh session.</p>
+          </div>
+        </article>
+
+        <article class="content-block" id="related">
+          <p class="eyebrow">Owned skills</p>
+          <div class="pill-row">
+            <a class="pill" href="tdd.html">tdd</a>
+            <a class="pill" href="code-review.html">code-review</a>
+          </div>
+          <p><a href="tdd.html">tdd</a> — red → green at seams; behavior through public interfaces. <a href="code-review.html">code-review</a> — Standards (repo conventions + smell baseline) and Spec (originating issue) in parallel.</p>
+        </article>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>

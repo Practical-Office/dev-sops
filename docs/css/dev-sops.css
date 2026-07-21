@@ -841,6 +841,11 @@ body.nav-open .sidebar {
   font-size: 0.75rem;
 }
 
+.skill-nav-link {
+  padding-left: 1.75rem;
+  font-size: 0.875rem;
+}
+
 .content-block {
   margin: 1.25rem 0;
 }

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/wayfinder · Dev SOPs · Practical AI</title>
+  <meta name="description" content="Issue tracker navigation and one-ticket-per-session discipline." />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/dev-sops.css" />
+</head>
+<body data-page="skill-detail" data-skill="wayfinder" data-base="../">
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation"></aside>
+    <div class="main">
+      <header class="topbar no-print">
+        <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="topbar-title">/wayfinder</div>
+      </header>
+      <main class="content" id="top">
+        <div class="section-card" style="margin-bottom:1.5rem">
+          <p class="eyebrow">SOP usage</p>
+          <div class="pill-row"><span class="pill">BML: Optional</span> <span class="pill">Bug: Optional</span> <span class="pill">Update: Optional</span></div>
+        </div>
+        <section class="skill-hero module">
+          <div class="module-header">
+            <div class="module-badge">/way</div>
+            <div>
+              <h2>Wayfinder</h2>
+              <p class="module-time">Planning skill · decision maps on your issue tracker</p>
+            </div>
+          </div>
+          <p>Plan a huge chunk of work — more than one agent session can hold — as a <strong>shared map of decision tickets</strong>. Resolve them one at a time until the route to the destination is clear. Wayfinding finds the way; it does not charge at the destination.</p>
+          <div class="pill-row">
+            <a class="pill" href="https://practical-office.github.io/bml-onboarding/">← Module 5: Running an experiment</a>
+            <a class="pill" href="prototype.html">/prototype</a>
+            <a class="pill" href="grilling.html">/grilling</a>
+          </div>
+        </section>
+
+        <div class="content-block">
+          <h3>Why</h3>
+          <p>Some efforts arrive wrapped in fog: the destination is visible, but the sequence of decisions to get there is not. A single experiment ticket is the right unit for one hypothesis. A multi-quarter platform bet, pricing overhaul, or new product surface needs a <strong>map</strong> — an index of decisions, not a Gantt of deliverables.</p>
+          <p>Wayfinder keeps planning honest: each ticket resolves a <em>question</em>, default mode is plan-not-do, and the map is done when nothing remains to decide before someone executes. The pull to “just build it” usually means you’ve reached the edge of the map and should hand off to specs, experiment tickets, or implementation.</p>
+          <p><strong>This course is not a wayfinder map.</strong> These modules teach the Build-Measure-Learn system. Use wayfinder on <em>your product’s</em> fuzzy efforts — not to re-chart this onboarding course.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>When</h3>
+          <ul>
+            <li>A loose idea is too big for one session and the path is unclear</li>
+            <li>You need a shared index of open decisions collaborators can claim independently</li>
+            <li>Research, prototypes, or grilling must happen in dependency order before committing to Build</li>
+            <li>You’re deciding <em>what</em> to experiment on or <em>how</em> to structure a bet — not running a single experiment through Measure/Learn</li>
+          </ul>
+          <p><strong>Not for</strong> tracer-bullet implementation tickets (use <code>/to-tickets</code>), single experiment execution (use <a href="https://practical-office.github.io/bml-onboarding/">Module 5</a>), or charting training content you’re already taking module-by-module.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>How</h3>
+          <h3 style="margin-top:1rem;font-size:1rem">Chart the map (one session)</h3>
+          <ol>
+            <li><strong>Name the destination.</strong> Grilling + domain modeling — spec to hand off, decision to lock, or change to make in place.</li>
+            <li><strong>Map the frontier.</strong> Breadth-first: surface open decisions and first takeable steps. If the way is already clear and small, you may not need a map — ask how to proceed.</li>
+            <li><strong>Create the map issue</strong> (label <code>wayfinder:map</code>): Destination, Notes, empty Decisions so far, fog in Not yet specified, Out of scope.</li>
+            <li><strong>Create child tickets</strong> you can specify now; wire blocking in a second pass. Unspecifiable fog stays in Not yet specified.</li>
+            <li><strong>Fire research subagents</strong> for <code>research</code> tickets in parallel. Stop — charting resolves nothing.</li>
+          </ol>
+
+          <h3 style="margin-top:1rem;font-size:1rem">Work through the map (one ticket per session)</h3>
+          <ol>
+            <li>Load the map — low-res index, not every ticket body.</li>
+            <li>Choose a frontier ticket (open, unblocked, unclaimed). <strong>Claim</strong> by assigning before any work.</li>
+            <li>Resolve via the ticket type: <code>research</code> (AFK), <code>prototype</code> (HITL), <code>grilling</code> (HITL), <code>task</code> (unblocks a decision).</li>
+            <li>Record resolution as a comment, close the ticket, append gist + link to map Decisions so far.</li>
+            <li>Graduate fog into new tickets; rule mis-scoped work out of scope. Never resolve more than one ticket per session (except parallel research during charting).</li>
+          </ol>
+
+          <h3 style="margin-top:1rem;font-size:1rem">Refer by name</h3>
+          <p>In human-readable narration, use ticket <strong>titles</strong>, not bare ids. Names wrap links; <code>#42</code> walls are illegible.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>Inputs / outputs</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Inputs</th><th>Outputs</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Loose idea + named destination</td>
+                  <td>Map issue with Destination, Notes, fog, out of scope</td>
+                </tr>
+                <tr>
+                  <td>Sharp questions specifiable now</td>
+                  <td>Child tickets with <code>wayfinder:&lt;type&gt;</code> labels + blocking edges</td>
+                </tr>
+                <tr>
+                  <td>Claimed frontier ticket</td>
+                  <td>Resolution comment + closed ticket + Decisions-so-far line</td>
+                </tr>
+                <tr>
+                  <td>Answers that clear fog</td>
+                  <td>New tickets; updated Not yet specified; scope boundaries</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>Ticket types</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Type</th><th>Mode</th><th>Resolves via</th></tr></thead>
+              <tbody>
+                <tr><td><code>research</code></td><td>AFK</td><td><code>/research</code> subagent — external docs, APIs, facts</td></tr>
+                <tr><td><code>prototype</code></td><td>HITL</td><td><a href="prototype.html"><code>/prototype</code></a> — concrete artifact to react to</td></tr>
+                <tr><td><code>grilling</code></td><td>HITL</td><td><code>/grilling</code> + domain modeling — default case</td></tr>
+                <tr><td><code>task</code></td><td>HITL or AFK</td><td>Manual work that unblocks a decision (access, data move) — not the destination itself</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="failure-modes">
+          <h3>Anti-patterns</h3>
+          <ul>
+            <li><strong>Execution map.</strong> Tickets that are build slices instead of decisions — use <code>/to-tickets</code> after the way is clear.</li>
+            <li><strong>Pre-slicing fog.</strong> Ticketizing what you cannot yet phrase sharply; one fog patch may become several tickets or none.</li>
+            <li><strong>Multi-resolve sessions.</strong> Closing three tickets in one sitting — loses reviewability and concurrent claim safety.</li>
+            <li><strong>Agent stands in for HITL.</strong> A grilling ticket where the agent answers its own questions.</li>
+            <li><strong>Map as store.</strong> Pasting full decisions into the map body instead of gists + links on child tickets.</li>
+            <li><strong>Re-charting this course.</strong> Wayfinder on Build-Measure-Learn Onboarding itself — you’re already in the guided module path.</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h3>Micro-scenario</h3>
+          <p><strong>Destination:</strong> “Experiment program for a new analytics surface — know which three hypotheses to run in Q1.”</p>
+          <p><strong>Map created.</strong> Frontier tickets: “Which behaviors are falsifiable in week one?” (grilling), “What do competitors expose in their APIs?” (research, blocks instrumentation decision), “Task: sample export from staging” (task, blocks data-shape grilling).</p>
+          <p>Research closes — API lacks act-level events; grilling revises hypotheses to view-based proxies. Fog graduates: “Do we need a prototype insight card before ticket drafting?” → new <code>prototype</code> ticket.</p>
+          <p>When the last open ticket closes, the map hands off: three experiment issues filed on the Build-Measure-Learn board (Backlog), each with hypothesis + kill criteria. Wayfinder stops; <a href="https://practical-office.github.io/bml-onboarding/">Module 5</a> execution begins.</p>
+        </div>
+        <p class="footer-note"><a href="../skills.html">← All skills</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/dev-sops.js"></script>
+</body>
+</html>
