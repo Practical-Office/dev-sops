@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dev SOPs &amp; Skills — Practical AI</title>
-  <meta name="description" content="Hub for Practical AI team SOPs (Bug, Update, BML) and Cursor skills." />
+  <meta name="description" content="Hub for Practical AI team SOPs (BML, Bug, Update) and Cursor skills." />
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,9 +25,9 @@
       <nav class="sidebar-nav">
         <p class="nav-section-label">SOPs</p>
         <a class="nav-link is-active" href="index.html"><span class="nav-num">⌂</span> Hub</a>
-        <a class="nav-link" href="https://practical-office.github.io/bug-handling-sop/" target="_blank" rel="noopener noreferrer"><span class="nav-num">B</span> Bug Handling</a>
-        <a class="nav-link" href="https://practical-office.github.io/update-sop/" target="_blank" rel="noopener noreferrer"><span class="nav-num">U</span> Update Handling</a>
-        <a class="nav-link" href="https://practical-office.github.io/bml-onboarding/" target="_blank" rel="noopener noreferrer"><span class="nav-num">M</span> Build-Measure-Learn</a>
+        <a class="nav-link" href="https://practical-office.github.io/bml-onboarding/"><span class="nav-num">1</span> Build-Measure-Learn</a>
+        <a class="nav-link" href="https://practical-office.github.io/bug-handling-sop/"><span class="nav-num">2</span> Bug Handling</a>
+        <a class="nav-link" href="https://practical-office.github.io/update-sop/"><span class="nav-num">3</span> Update Handling</a>
         <p class="nav-section-label">Board</p>
         <a class="nav-link" href="https://github.com/orgs/Practical-Office/projects/2" target="_blank" rel="noopener noreferrer"><span class="nav-num">#</span> Team Work</a>
       </nav>
@@ -55,35 +55,48 @@
             <table>
               <thead><tr><th>Label</th><th>When</th><th>Course</th></tr></thead>
               <tbody>
+                <tr><td><code>BML</code></td><td>Risky assumption / experiment</td><td><a href="https://practical-office.github.io/bml-onboarding/">Build-Measure-Learn</a> → BML Board</td></tr>
                 <tr><td><code>Bug</code></td><td>Broken known behavior</td><td><a href="https://practical-office.github.io/bug-handling-sop/">Bug Handling SOP</a></td></tr>
                 <tr><td><code>Update</code></td><td>Decided outcome — not a learning bet</td><td><a href="https://practical-office.github.io/update-sop/">Update Handling SOP</a></td></tr>
-                <tr><td><code>BML</code></td><td>Risky assumption / experiment</td><td><a href="https://practical-office.github.io/bml-onboarding/">Build-Measure-Learn</a> → BML Board</td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
         <div class="card-grid">
+          <a class="stat-card" href="https://practical-office.github.io/bml-onboarding/" style="text-decoration:none;color:inherit">
+            <strong>1 · Build-Measure-Learn</strong><span>Hypothesis · Measure · Learn / kill</span>
+          </a>
           <a class="stat-card" href="https://practical-office.github.io/bug-handling-sop/" style="text-decoration:none;color:inherit">
-            <strong>Bug Handling</strong><span>Report → Triage → Diagnose → Fix → RCA</span>
+            <strong>2 · Bug Handling</strong><span>Report → Triage → Diagnose → Fix → RCA</span>
           </a>
           <a class="stat-card" href="https://practical-office.github.io/update-sop/" style="text-decoration:none;color:inherit">
-            <strong>Update Handling</strong><span>Decided work · Build skills · Acceptance verify</span>
-          </a>
-          <a class="stat-card" href="https://practical-office.github.io/bml-onboarding/" style="text-decoration:none;color:inherit">
-            <strong>Build-Measure-Learn</strong><span>Hypothesis · Measure · Learn / kill</span>
+            <strong>3 · Update Handling</strong><span>Decided work · Build skills · Acceptance verify</span>
           </a>
         </div>
 
         <div class="section-card">
           <p class="eyebrow">Skills by loop</p>
+          <p>Each course has a <strong>Skills</strong> section in its sidebar (same pattern as BML). Open a course, then open a skill page.</p>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Loop</th><th>Primary chain</th></tr></thead>
+              <thead><tr><th>Loop</th><th>Primary chain</th><th>Skill pages</th></tr></thead>
               <tbody>
-                <tr><td>Bug</td><td><code>/diagnosing-bugs</code> → <code>/tdd</code> → <code>/code-review</code> (+ <code>/triage</code>, grill at intake)</td></tr>
-                <tr><td>Update</td><td><code>/grill-with-docs</code> → <code>/to-spec</code> → <code>/to-tickets</code> → <code>/implement</code></td></tr>
-                <tr><td>BML</td><td>Same Build chain + Measure / Learn on BML Board</td></tr>
+                <tr>
+                  <td>BML</td>
+                  <td><code>/grill-with-docs</code> → <code>/to-spec</code> → <code>/to-tickets</code> → <code>/implement</code></td>
+                  <td><a href="https://practical-office.github.io/bml-onboarding/skills/grill-with-docs.html">Open BML skills</a></td>
+                </tr>
+                <tr>
+                  <td>Bug</td>
+                  <td><code>/diagnosing-bugs</code> → <code>/tdd</code> → <code>/code-review</code> (+ <code>/triage</code>, grill at intake)</td>
+                  <td><a href="https://practical-office.github.io/bug-handling-sop/skills/diagnosing-bugs.html">Open Bug skills</a></td>
+                </tr>
+                <tr>
+                  <td>Update</td>
+                  <td><code>/grill-with-docs</code> → <code>/to-spec</code> → <code>/to-tickets</code> → <code>/implement</code></td>
+                  <td><a href="https://practical-office.github.io/update-sop/skills/grill-with-docs.html">Open Update skills</a></td>
+                </tr>
               </tbody>
             </table>
           </div>
