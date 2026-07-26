@@ -1,0 +1,29 @@
+{
+  "folders": [
+    {
+      "name": "dev-sops (hub)",
+      "path": "."
+    },
+    {
+      "name": "bug-handling-sop",
+      "path": "../bug-handling-sop"
+    },
+    {
+      "name": "update-sop",
+      "path": "../update-sop"
+    },
+    {
+      "name": "bml-onboarding",
+      "path": "../bml-onboarding"
+    },
+    {
+      "name": "Cursor-AI-dev",
+      "path": "../Cursor-AI-dev"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/docs/.DS_Store": true
+    }
+  }
+}
