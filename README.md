@@ -12,6 +12,7 @@ Index of team **SOPs** and **Cursor skills** — links to each onboarding course
 | Update | `Update` | [update-sop](https://practical-office.github.io/update-sop/) |
 | BML | `BML` | [bml-onboarding](https://practical-office.github.io/bml-onboarding/) |
 | Foundation | — | [Cursor-AI-dev](https://practical-office.github.io/Cursor-AI-dev/) (Cursor + Matt Skills) |
+| Agents | — | [grok-build-agents](https://practical-office.github.io/grok-build-agents/) (Grok Build Agents) |
 
 **Intake board:** [Team Work (project 2)](https://github.com/orgs/Practical-Office/projects/2)
 
@@ -28,6 +29,7 @@ Open this file in Cursor to work the hub and all SOP courses in one window (each
 | Update | `p-ai/update-sop` |
 | BML | `p-ai/bml-onboarding` |
 | Cursor AI | `p-ai/Cursor-AI-dev` |
+| Grok Build Agents | `p-ai/grok-build-agents` |
 
 ## Local preview
 
