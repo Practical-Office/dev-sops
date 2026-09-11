@@ -81,6 +81,10 @@
         <a class="nav-link" href="https://practical-office.github.io/bml-onboarding/"><span class="nav-num">1</span> Build-Measure-Learn</a>
         <a class="nav-link" href="https://practical-office.github.io/bug-handling-sop/"><span class="nav-num">2</span> Bug Handling</a>
         <a class="nav-link" href="https://practical-office.github.io/update-sop/"><span class="nav-num">3</span> Update Handling</a>
+        <p class="nav-section-label">Training</p>
+        <a class="nav-link" href="https://practical-office.github.io/Cursor-AI-dev/"><span class="nav-num">4</span> Cursor + Matt Skills</a>
+        <a class="nav-link" href="https://practical-office.github.io/grok-build-agents/"><span class="nav-num">5</span> Grok Build Agents</a>
+        <a class="nav-link${pageId === "grok-bots-kickstart" ? " is-active" : ""}" href="${href("grok-bots-kickstart.html")}"><span class="nav-num">6</span> Grok Bots Kickstart</a>
         <p class="nav-section-label">Reference</p>
         ${skillsBlock}
         <a class="nav-link${checkActive ? " is-active" : ""}" href="${href("checklists.html")}"><span class="nav-num">☑</span> Check List</a>
